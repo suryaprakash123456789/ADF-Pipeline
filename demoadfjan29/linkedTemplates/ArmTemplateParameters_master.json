@@ -1,0 +1,57 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "demoadfjan29"
+		},
+		"AzureDatabricks1_accessToken": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_password": {
+			"value": ""
+		},
+		"ls_ADBtoSQL_accessToken": {
+			"value": ""
+		},
+		"ls_adb_connection_accessToken": {
+			"value": ""
+		},
+		"ls_adbd_to_SQL_accessToken": {
+			"value": ""
+		},
+		"ls_blobstorage_s1_connectionString": {
+			"value": ""
+		},
+		"ls_blobstorage_s2_connectionString": {
+			"value": ""
+		},
+		"AzureDatabricks1_properties_typeProperties_existingClusterId": {
+			"value": "0202-102829-570iyzcj"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "newdatabase11.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "newdatabase"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "Edukron"
+		},
+		"ls_ADBtoSQL_properties_typeProperties_existingClusterId": {
+			"value": "0202-102829-570iyzcj"
+		},
+		"ls_adb_connection_properties_typeProperties_existingClusterId": {
+			"value": "0202-102829-570iyzcj"
+		},
+		"ls_adbd_to_SQL_properties_typeProperties_existingClusterId": {
+			"value": "0202-102829-570iyzcj"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
