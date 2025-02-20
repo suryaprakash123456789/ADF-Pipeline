@@ -1,0 +1,30 @@
+{
+	"name": "adbdtoSQL",
+	"properties": {
+		"activities": [
+			{
+				"name": "Notebook1",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/surya190602@gmail.com/AzureDatabrickstoSQLServer"
+				},
+				"linkedServiceName": {
+					"referenceName": "ls_adbd_to_SQL",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2025-02-04T18:24:24Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
