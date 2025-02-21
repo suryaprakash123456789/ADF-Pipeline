@@ -1,6 +1,25 @@
 {
 	"name": "SwitchActivity",
 	"properties": {
+		"activities": [
+			{
+				"name": "Switch1",
+				"type": "Switch",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"on": {
+						"value": "@pipeline().parameters.RouteSelector",
+						"type": "Expression"
+					},
+					"cases": [
+						{
+							"value": "Case1"
+						}
+					]
+				}
+			}
+		],
 		"parameters": {
 			"inputfile": {
 				"type": "string"
