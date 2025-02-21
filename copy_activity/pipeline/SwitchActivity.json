@@ -12,6 +12,14 @@
 				}
 			}
 		],
+		"parameters": {
+			"inputfile": {
+				"type": "string"
+			},
+			"outputflod1": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
