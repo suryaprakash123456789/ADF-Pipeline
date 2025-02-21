@@ -18,6 +18,12 @@
 			},
 			"outputflod1": {
 				"type": "string"
+			},
+			"outflod2": {
+				"type": "string"
+			},
+			"outflo3": {
+				"type": "string"
 			}
 		},
 		"annotations": []
