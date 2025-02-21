@@ -1,0 +1,23 @@
+{
+	"name": "ValidationActivity",
+	"properties": {
+		"activities": [
+			{
+				"name": "Validation1",
+				"type": "Validation",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "DelimitedText7",
+						"type": "DatasetReference"
+					},
+					"timeout": "0.00:00:59",
+					"sleep": 10,
+					"minimumSize": 50
+				}
+			}
+		],
+		"annotations": []
+	}
+}
