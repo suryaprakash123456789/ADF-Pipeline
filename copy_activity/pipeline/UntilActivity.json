@@ -8,7 +8,7 @@
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
-					"timeout": "0.12:00:00"
+					"timeout": "0.00:0:00"
 				}
 			}
 		],
