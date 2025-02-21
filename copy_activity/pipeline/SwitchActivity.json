@@ -68,7 +68,13 @@
 									"inputs": [
 										{
 											"referenceName": "DelimitedText10",
-											"type": "DatasetReference"
+											"type": "DatasetReference",
+											"parameters": {
+												"inp": {
+													"value": "@pipeline().parameters.inputfile",
+													"type": "Expression"
+												}
+											}
 										}
 									],
 									"outputs": [
@@ -85,6 +91,9 @@
 									]
 								}
 							]
+						},
+						{
+							"value": ""
 						}
 					]
 				}
