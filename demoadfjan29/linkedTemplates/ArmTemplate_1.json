@@ -13,6 +13,151 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/DelimitedText9')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_blobstorage_s1",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"outputdest": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": {
+							"value": "@dataset().outputdest",
+							"type": "Expression"
+						},
+						"container": "destination"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "SK_ID_CURR",
+						"type": "String"
+					},
+					{
+						"name": "SK_ID_BUREAU",
+						"type": "String"
+					},
+					{
+						"name": "CREDIT_ACTIVE",
+						"type": "String"
+					},
+					{
+						"name": "CREDIT_CURRENCY",
+						"type": "String"
+					},
+					{
+						"name": "DAYS_CREDIT",
+						"type": "String"
+					},
+					{
+						"name": "CREDIT_DAY_OVERDUE",
+						"type": "String"
+					},
+					{
+						"name": "DAYS_CREDIT_ENDDATE",
+						"type": "String"
+					},
+					{
+						"name": "DAYS_ENDDATE_FACT",
+						"type": "String"
+					},
+					{
+						"name": "AMT_CREDIT_MAX_OVERDUE",
+						"type": "String"
+					},
+					{
+						"name": "CNT_CREDIT_PROLONG",
+						"type": "String"
+					},
+					{
+						"name": "AMT_CREDIT_SUM",
+						"type": "String"
+					},
+					{
+						"name": "AMT_CREDIT_SUM_DEBT",
+						"type": "String"
+					},
+					{
+						"name": "AMT_CREDIT_SUM_LIMIT",
+						"type": "String"
+					},
+					{
+						"name": "AMT_CREDIT_SUM_OVERDUE",
+						"type": "String"
+					},
+					{
+						"name": "CREDIT_TYPE",
+						"type": "String"
+					},
+					{
+						"name": "DAYS_CREDIT_UPDATE",
+						"type": "String"
+					},
+					{
+						"name": "AMT_ANNUITY",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Json1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_blobstorage_s2",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "destination"
+					}
+				},
+				"schema": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/dilactiv')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_blobstorage_s1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Binary",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "sample_submission.csv",
+						"container": "source"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/DeleteActitvity')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -61,7 +206,122 @@
 				},
 				"annotations": []
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/dilactiv')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/UntilActivity')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Until1",
+						"type": "Until",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"expression": {
+								"value": "@equals(pipeline().parameters.Repeat,'false')",
+								"type": "Expression"
+							},
+							"activities": [
+								{
+									"name": "Copy data1",
+									"type": "Copy",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"source": {
+											"type": "DelimitedTextSource",
+											"storeSettings": {
+												"type": "AzureBlobStorageReadSettings",
+												"recursive": true,
+												"wildcardFileName": "*",
+												"enablePartitionDiscovery": false
+											},
+											"formatSettings": {
+												"type": "DelimitedTextReadSettings"
+											}
+										},
+										"sink": {
+											"type": "DelimitedTextSink",
+											"storeSettings": {
+												"type": "AzureBlobStorageWriteSettings"
+											},
+											"formatSettings": {
+												"type": "DelimitedTextWriteSettings",
+												"quoteAllText": true,
+												"fileExtension": ".txt"
+											}
+										},
+										"enableStaging": false,
+										"translator": {
+											"type": "TabularTranslator",
+											"typeConversion": true,
+											"typeConversionSettings": {
+												"allowDataTruncation": true,
+												"treatBooleanAsNumber": false
+											}
+										}
+									},
+									"inputs": [
+										{
+											"referenceName": "DelimitedText8",
+											"type": "DatasetReference",
+											"parameters": {
+												"filename": {
+													"value": "@pipeline().parameters.InputFile",
+													"type": "Expression"
+												}
+											}
+										}
+									],
+									"outputs": [
+										{
+											"referenceName": "DelimitedText9",
+											"type": "DatasetReference",
+											"parameters": {
+												"outputdest": {
+													"value": "@pipeline().parameters.OutputFile",
+													"type": "Expression"
+												}
+											}
+										}
+									]
+								}
+							],
+							"timeout": "0.00:01:00"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"InputFile": {
+						"type": "string"
+					},
+					"OutputFile": {
+						"type": "string"
+					},
+					"Repeat": {
+						"type": "string"
+					}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/DelimitedText9')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/ValidationActivity')]",
@@ -425,7 +685,9 @@
 				"annotations": [],
 				"lastPublishTime": "2025-01-29T18:19:35Z"
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/Json1')]"
+			]
 		}
 	]
 }
