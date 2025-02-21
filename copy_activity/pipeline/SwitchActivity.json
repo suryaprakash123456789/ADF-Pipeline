@@ -75,7 +75,13 @@
 									"outputs": [
 										{
 											"referenceName": "DelimitedText11",
-											"type": "DatasetReference"
+											"type": "DatasetReference",
+											"parameters": {
+												"op": {
+													"value": "@pipeline().parameters.outputflod1",
+													"type": "Expression"
+												}
+											}
 										}
 									]
 								}
