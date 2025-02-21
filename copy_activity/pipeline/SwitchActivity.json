@@ -8,6 +8,10 @@
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
+					"on": {
+						"value": "@pipeline().parameters.RouteSelector",
+						"type": "Expression"
+					},
 					"cases": []
 				}
 			}
@@ -23,6 +27,9 @@
 				"type": "string"
 			},
 			"outflo3": {
+				"type": "string"
+			},
+			"RouteSelector": {
 				"type": "string"
 			}
 		},
