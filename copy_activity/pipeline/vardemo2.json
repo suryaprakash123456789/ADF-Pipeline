@@ -34,7 +34,10 @@
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "var 2",
-					"value": ""
+					"value": {
+						"value": "@concat(variables('var'),' ','channel')",
+						"type": "Expression"
+					}
 				}
 			}
 		],
