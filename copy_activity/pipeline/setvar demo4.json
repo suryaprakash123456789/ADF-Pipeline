@@ -44,7 +44,7 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"variableName": "var",
+								"variableName": "var2",
 								"value": "ck channel"
 							}
 						}
@@ -55,6 +55,9 @@
 		],
 		"variables": {
 			"var": {
+				"type": "String"
+			},
+			"var2": {
 				"type": "String"
 			}
 		},
