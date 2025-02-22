@@ -5,11 +5,20 @@
 			"referenceName": "ls_blobstorage_s1",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"op1": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"folderPath": {
+					"value": "@dataset().op1",
+					"type": "Expression"
+				},
 				"container": "destination"
 			},
 			"columnDelimiter": ",",
