@@ -11,10 +11,31 @@
 					"expression": {
 						"value": "true",
 						"type": "Expression"
-					}
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Set variable1",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "var",
+								"value": "this is a true "
+							}
+						}
+					]
 				}
 			}
 		],
+		"variables": {
+			"var": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
