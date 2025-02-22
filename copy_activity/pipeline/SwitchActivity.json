@@ -34,6 +34,10 @@
 											"storeSettings": {
 												"type": "AzureBlobStorageReadSettings",
 												"recursive": true,
+												"wildcardFileName": {
+													"value": "@pipeline().parameters.inputfile",
+													"type": "Expression"
+												},
 												"enablePartitionDiscovery": false
 											},
 											"formatSettings": {
@@ -45,7 +49,13 @@
 									"inputs": [
 										{
 											"referenceName": "DelimitedText12",
-											"type": "DatasetReference"
+											"type": "DatasetReference",
+											"parameters": {
+												"filename": {
+													"value": "@pipeline().parameters.inputfile",
+													"type": "Expression"
+												}
+											}
 										}
 									]
 								}
