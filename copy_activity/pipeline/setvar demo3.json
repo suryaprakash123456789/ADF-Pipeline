@@ -61,7 +61,14 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "finvar",
+					"value": {
+						"value": "@variables('var')",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"variables": {
