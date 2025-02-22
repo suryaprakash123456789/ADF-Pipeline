@@ -12,6 +12,22 @@
 						"value": "true",
 						"type": "Expression"
 					},
+					"ifFalseActivities": [
+						{
+							"name": "Set variable2",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "var",
+								"value": "this a fals"
+							}
+						}
+					],
 					"ifTrueActivities": [
 						{
 							"name": "Set variable1",
@@ -24,7 +40,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"variableName": "var",
-								"value": "this is a true "
+								"value": "this is a true block"
 							}
 						}
 					]
