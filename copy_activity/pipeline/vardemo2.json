@@ -10,7 +10,32 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "var",
+					"value": "ck"
+				}
+			},
+			{
+				"name": "Set variable2",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Set variable1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "var 2",
+					"value": ""
+				}
 			}
 		],
 		"variables": {
@@ -18,6 +43,9 @@
 				"type": "String"
 			},
 			"var": {
+				"type": "String"
+			},
+			"var 2": {
 				"type": "String"
 			}
 		},
