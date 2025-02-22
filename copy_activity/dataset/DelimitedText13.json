@@ -1,0 +1,91 @@
+{
+	"name": "DelimitedText13",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_blobstorage_s1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "destination"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "SK_ID_CURR",
+				"type": "String"
+			},
+			{
+				"name": "SK_ID_BUREAU",
+				"type": "String"
+			},
+			{
+				"name": "CREDIT_ACTIVE",
+				"type": "String"
+			},
+			{
+				"name": "CREDIT_CURRENCY",
+				"type": "String"
+			},
+			{
+				"name": "DAYS_CREDIT",
+				"type": "String"
+			},
+			{
+				"name": "CREDIT_DAY_OVERDUE",
+				"type": "String"
+			},
+			{
+				"name": "DAYS_CREDIT_ENDDATE",
+				"type": "String"
+			},
+			{
+				"name": "DAYS_ENDDATE_FACT",
+				"type": "String"
+			},
+			{
+				"name": "AMT_CREDIT_MAX_OVERDUE",
+				"type": "String"
+			},
+			{
+				"name": "CNT_CREDIT_PROLONG",
+				"type": "String"
+			},
+			{
+				"name": "AMT_CREDIT_SUM",
+				"type": "String"
+			},
+			{
+				"name": "AMT_CREDIT_SUM_DEBT",
+				"type": "String"
+			},
+			{
+				"name": "AMT_CREDIT_SUM_LIMIT",
+				"type": "String"
+			},
+			{
+				"name": "AMT_CREDIT_SUM_OVERDUE",
+				"type": "String"
+			},
+			{
+				"name": "CREDIT_TYPE",
+				"type": "String"
+			},
+			{
+				"name": "DAYS_CREDIT_UPDATE",
+				"type": "String"
+			},
+			{
+				"name": "AMT_ANNUITY",
+				"type": "String"
+			}
+		]
+	}
+}
