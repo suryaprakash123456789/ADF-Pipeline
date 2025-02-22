@@ -162,7 +162,7 @@
 											"type": "DatasetReference",
 											"parameters": {
 												"op1": {
-													"value": "@pipeline().parameters.outputflod1",
+													"value": "@pipeline().parameters.outflod2",
 													"type": "Expression"
 												}
 											}
