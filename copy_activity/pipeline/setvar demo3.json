@@ -24,7 +24,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"variableName": "var",
-								"value": "this a fals"
+								"value": "this a false block"
 							}
 						}
 					],
@@ -45,10 +45,30 @@
 						}
 					]
 				}
+			},
+			{
+				"name": "Set variable3",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "If Condition1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": []
 			}
 		],
 		"variables": {
 			"var": {
+				"type": "String"
+			},
+			"finvar": {
 				"type": "String"
 			}
 		},
