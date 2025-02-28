@@ -1,5 +1,5 @@
 {
-	"name": "Execute pipeline",
+	"name": "masterExecute pipeline",
 	"properties": {
 		"activities": [
 			{
